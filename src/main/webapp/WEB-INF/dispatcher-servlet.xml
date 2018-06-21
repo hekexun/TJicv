@@ -19,8 +19,7 @@
     <mvc:resources mapping="/images/**" location="/Files/img/"/>
     <mvc:resources mapping="/**/*.html" location="/" />
     <mvc:resources mapping="/**" location="/Files/" />
-    <mvc:resources mapping="/*.html" location="/Files/" />
-    <mvc:resources mapping="/*.do" location="/Files/" />
+    <mvc:resources mapping="/**/*.do" location="/" />
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
