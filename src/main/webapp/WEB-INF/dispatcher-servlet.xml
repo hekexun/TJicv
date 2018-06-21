@@ -14,12 +14,13 @@
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
-    <mvc:resources mapping="/css/**" location="/WEB-INF/statics/css/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>
-    <mvc:resources mapping="/images/**" location="/WEB-INF/statics/images/"/>
+    <mvc:resources mapping="/css/**" location="/Files/css/"/>
+    <mvc:resources mapping="/js/**" location="/Files/js/"/>
+    <mvc:resources mapping="/images/**" location="/Files/img/"/>
     <mvc:resources mapping="/**/*.html" location="/" />
-    <mvc:resources mapping="/**" location="/views/" />
-    <mvc:resources mapping="/**/*.do" location="/" />
+    <mvc:resources mapping="/**" location="/Files/" />
+    <mvc:resources mapping="/*.html" location="/Files/" />
+    <mvc:resources mapping="/*.do" location="/Files/" />
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
@@ -31,6 +32,6 @@
     </bean>
 
     <!-- 自动扫描装配 -->
-    <context:component-scan base-package="example.controller"/>
+    <context:component-scan base-package="controller"/>
 
 </beans>
