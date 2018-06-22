@@ -652,4 +652,32 @@ Date Time Widget
     }, 1000);
 })();
 
-
+function doLogin() {
+    $.cookie('username', null);
+    $.cookie('password', null);
+    var userName = $("#username").val();
+    var password=$("#password").val();
+    $.ajax({
+            type:"post",
+            url:"login.do",
+            dataType: 'json',
+            data:{"username":userName,"password" : password },
+            success:function(data_or){
+                var user=data_or;
+                if (user.state=="2") {
+                    $.cookie("userName", userName,{expires:1,Domain:"http://127.0.0.1:8080"});
+                    //$.cookie("password", password,{expires:1,Domain:"http://127.0.0.1:8080"});
+                    window.location.href = "/Files/index.html";
+                } else {
+                    alert("登陆失败");
+                    window.location.reload();
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            }
+        }
+    );
+}

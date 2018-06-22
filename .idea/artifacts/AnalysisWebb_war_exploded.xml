@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="AnalysisWeb:war exploded">
-    <output-path>$PROJECT_DIR$/target/AppWeb</output-path>
+  <artifact type="exploded-war" name="AnalysisWebb:war exploded">
+    <output-path>$PROJECT_DIR$/target/</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="AnalysisWeb" />
+          <element id="module-output" name="AnalysisWebb" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" />
@@ -44,7 +44,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/AppWeb/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="AnalysisWeb/web/Web" />
+      <element id="javaee-facet-resources" facet="AnalysisWebb/web/Web" />
     </root>
   </artifact>
 </component>

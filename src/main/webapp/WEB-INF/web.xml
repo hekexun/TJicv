@@ -9,7 +9,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <!--welcome pages-->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>login.html</welcome-file>
   </welcome-file-list>
   <!--配置springmvc DispatcherServlet-->
   <servlet>
@@ -25,7 +25,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springMVC</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   <!--把applicationContext.xml加入到配置文件中-->
   <context-param>

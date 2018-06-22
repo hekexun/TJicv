@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AnalysisWeb.iml" filepath="$PROJECT_DIR$/AnalysisWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AnalysisWebb.iml" filepath="$PROJECT_DIR$/AnalysisWebb.iml" />
     </modules>
   </component>
 </project>
