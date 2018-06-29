@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 
 @Controller
 public class loginController {
-    @RequestMapping(value="/login.do")
+    @RequestMapping(value="//login.do")
     public @ResponseBody
     String loginVerify(HttpServletRequest request, HttpServletResponse response,String username,String password) {
         System.out.println("123");
