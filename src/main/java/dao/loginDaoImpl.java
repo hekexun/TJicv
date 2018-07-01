@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/*
 public class loginDaoImpl implements loginDao {
     @Override
     public ResultSet getPasswd(Connection conn, String user) throws SQLException {
@@ -14,4 +14,4 @@ public class loginDaoImpl implements loginDao {
         ResultSet result = ps.executeQuery();
         return  result;
     }
-}
+}*/

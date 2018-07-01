@@ -18,7 +18,7 @@ public class ConnectionFactory {
 	static{ 
 		Properties prop= new Properties();
     	try {
-			InputStream in =ConnectionFactory.class.getClassLoader().getResourceAsStream("config.properties");
+			InputStream in =ConnectionFactory.class.getClassLoader().getResourceAsStream("log4j.properties");
 			prop.load(in);
 			
 		} catch (Exception e) {
