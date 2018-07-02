@@ -1,7 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="AnalysisWeb:war exploded">
-    <output-path>$PROJECT_DIR$/target/AnalysisWeb</output-path>
+  <artifact type="exploded-war" name="AnalysisWeb:Web exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/AnalysisWeb_Web_exploded</output-path>
     <root id="root">
+      <element id="javaee-facet-resources" facet="AnalysisWeb/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="AnalysisWeb" />
@@ -34,7 +35,6 @@
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.5" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
-          <element id="library" level="project" name="Maven: new.sf.ezmorph:ezmorph:unknown" />
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.3" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" />
@@ -52,10 +52,6 @@
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/AnalysisWeb/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="AnalysisWeb/web/Web" />
     </root>
   </artifact>
 </component>
