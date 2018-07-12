@@ -6,13 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AnalysisWeb" />
-        <module name="AnalysisWebb" />
+        <module name="ICVtj" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AnalysisWeb" target="1.7" />
-      <module name="AnalysisWebb" target="1.7" />
+      <module name="ICVtj" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

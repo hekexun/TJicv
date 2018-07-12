@@ -3,7 +3,11 @@
     <CLASSES>
       <root url="jar://D:/repository/c3p0/c3p0/0.9.0/c3p0-0.9.0.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://D:/repository/c3p0/c3p0/0.9.0/c3p0-0.9.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/repository/c3p0/c3p0/0.9.0/c3p0-0.9.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
