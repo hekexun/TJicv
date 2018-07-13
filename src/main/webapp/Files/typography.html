@@ -404,8 +404,13 @@
 
         <!-- Main Widgets -->
 
-        <div class="block-area">
-            <div id="allmap" class="my-car-thumbnail" style="height: 60%" >111111</div>
+        <div class="block-area" >
+
+            <div id="allmap" class="my-car-thumbnail" ></div>
+
+            <div class="clearfix"></div>
+
+
         </div>
 
         </div>
@@ -535,20 +540,20 @@
 
         // when the connection is established, this method is called
         ws.onopen = function () {
-            alert("open");
+            //alert("open");
             send();
         };
 
         // when the connection is closed, this method is called
         ws.onclose = function () {
-            alert("close");
+            //alert("close");
             window.ws.close();
             delete wsImpl;
             delete window.ws;
             setTimeout(webSocket.start, 2000);
         }
         function send() {
-            alert("send");
+            //alert("send");
             var obj = {
                 RequestDataType: "AllRealTimeData",
                 RequestType: "AddCars",
@@ -660,7 +665,7 @@
 
         function add_overlay(content,lot,lat,dir){
             var pt=new BMap.Point(lot, lat);
-            var myIcon = new BMap.Icon("img/icon/add.png", new BMap.Size(50,26));
+            var myIcon = new BMap.Icon("img/car.png", new BMap.Size(50,26));
             var marker = new BMap.Marker(pt,{icon:myIcon});
             marker.setRotation(dir+90);
             map.addOverlay(marker);
