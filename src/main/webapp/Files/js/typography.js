@@ -188,8 +188,12 @@ function remove_overlay(){
 setTimeout(map.clearOverlays(),5000);
 }
 function addClickHandler(content,marker){
-marker.addEventListener("click",function(e){
-openInfo(content,e)}
+marker.addEventListener("click",function(e){//点击图标弹出对话框
+    $("#mediaWindow").show();
+    document.getElementById("videoid").src="http://www.w3school.com.cn/i/movie.ogg" ;
+    document.getElementById("videoid").play();
+//openInfo(content,e)
+}
 );
 }
 
