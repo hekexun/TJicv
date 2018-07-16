@@ -1,6 +1,6 @@
 var carCarID = [15943, 15703, 11344];
 var map = new BMap.Map("allmap");
-map.setMapStyle({style: 'midnight'});  // 设置为夜景模式
+map.setMapStyle({style:'light'});  // 设置为夜景模式
 map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);  // 初始化地图,设置中心点坐标和地图级别
 //添加地图类型控件
 map.addControl(new BMap.MapTypeControl({
@@ -10,9 +10,9 @@ map.addControl(new BMap.MapTypeControl({
     ]
 }));
 map.setCurrentCity("天津");          // 设置地图显示的城市 此项是必须设置的
-map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
-map.addControl(new BMap.NavigationControl()); //添加地图缩放控件
+//map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+//map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
+//map.addControl(new BMap.NavigationControl()); //添加地图缩放控件
 map.addControl(new BMap.ScaleControl()); //添加比例尺控件
 map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
 //地图初始化结束

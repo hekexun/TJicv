@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ICVtj:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ICVtj.war">
+      <element id="artifact" artifact-name="ICVtj:war exploded" />
+    </root>
+  </artifact>
+</component>
