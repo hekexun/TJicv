@@ -180,7 +180,7 @@ var marker = new BMap.Marker(pt,{icon:myIcon});
 marker.setRotation(dir+90);
 map.addOverlay(marker);
 addClickHandler(content,marker);//左键处理
-    RightClickHandler(marker);//右键处理
+   // RightClickHandler(marker);//右键处理
 }
 //清除覆盖物
 //}
@@ -190,8 +190,9 @@ setTimeout(map.clearOverlays(),5000);
 function addClickHandler(content,marker){
 marker.addEventListener("click",function(e){//点击图标弹出对话框
     $("#mediaWindow").show();
-    document.getElementById("videoid").src="http://www.w3school.com.cn/i/movie.ogg" ;
-    document.getElementById("videoid").play();
+    getVideo();
+    //document.getElementById("videoid").src="http://www.w3school.com.cn/i/movie.ogg" ;
+   // document.getElementById("videoid").play();
 //openInfo(content,e)
 }
 );
@@ -204,18 +205,19 @@ var infoWindow = new BMap.InfoWindow(content);  // 创建信息窗口对象
 map.openInfoWindow(infoWindow,point); //开启信息窗口
 }
 }
-function getVideo(vbox_no) {
+function getVideo() {
     ///获得token
     var token;
     $.ajax({
             type:"post",
             async: false,
-            url:"cloud.calmcar.com/data/api/login.action",
+            url:"http://cloud.calmcar.com/data/api/login.action",
             contenttype:'application/json;charset=utf-8',
             dataType: 'json',
-            data:{"username": "dev_fang","password": "password","expirationmillis": 60000000,},
+            data:{"username": "catarc","password": "catarc@123","expirationmillis": 60000000},
             success:function(data_or){
-                var terminal=data_or;
+                var terminal=JSON.stringify(data_or);
+                var temdata=terminal.text;
                 if (terminal.data!=null) {
                     var token_json=eval(terminal.data);
                     token=token_json.token;
@@ -235,7 +237,7 @@ function getVideo(vbox_no) {
     $.ajax({
             type:"get",
             async: false,
-            url:"cloud.calmcar.com/data/api/vboxlist.action",
+            url:"http://cloud.calmcar.com/data/api/vboxlist.action",
             contentType:'application/json;charset=utf-8',
             dataType: 'json',
             Header:{"token": token},
@@ -245,8 +247,8 @@ function getVideo(vbox_no) {
                     var url_array=user.data;
                     for(i=0;i<url_array.length;i++)
                     {
-                        var id=eval(url_array[i]).vbox_no;
-                        if(id==vbox_no)
+                        var t_id=eval(url_array[i]).vbox_no;
+                        if(1==1)//vbox_no)
                         {
                             var url_ispush=eval(url_array[i]).ispush;
                             if (url_ispush==1)
@@ -259,11 +261,11 @@ function getVideo(vbox_no) {
                                 $.ajax({
                                     type: "post",
                                     async: false,
-                                    url: "cloud.calmcar.com/data/api/vboxpush.action",
+                                    url: "http://cloud.calmcar.com/data/api/vboxpush.action",
                                     contentType: 'application/json;charset=utf-8',
                                     dataType: 'json',
                                     Header:{"token": token},
-                                    data: {"devNo":vbox_no, "ispush": "1"},
+                                    data: {"devNo":t_id, "ispush": "1"},
                                     success: function (data_or) {
                                         var re=data_or;
                                         if (re.status== "success")

@@ -35,6 +35,10 @@
     <servlet-name>springMVC</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
   <!--把applicationContext.xml加入到配置文件中-->
   <!--Spring监听器 ApplicationContext 载入 -->
   <listener>
