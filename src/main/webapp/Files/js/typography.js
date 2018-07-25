@@ -212,17 +212,17 @@ function getVideo() {
             type:"post",
             async: false,
             url:"http://cloud.calmcar.com/data/api/login.action",
-            //contentType:'application/json;charset=utf-8',
+            contentType:'application/json;charset=utf-8',
             dataType:'json',
-            data:
+            data:JSON.stringify(
                 {
                     "username": "catarc",
                     "password": "catarc@123",
                     "expirationmillis": 60000000,
-                },
+                }),
             success:function(data_or){
-                var terminal=JSON.stringify(data_or);
-                var temdata=terminal.text;
+                var terminal=data_or;
+                //r temdata=terminal.text;
                 if (terminal.data!=null) {
                     var token_json=eval(terminal.data);
                     token=token_json.token;
