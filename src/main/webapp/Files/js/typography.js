@@ -245,7 +245,7 @@ function getVideo() {
             url:"http://cloud.calmcar.com/data/api/vboxlist.action",
             contentType:'application/json;charset=utf-8',
             dataType: 'json',
-            Header:{"token": token},
+            Header:JSON.stringify({"token": token}),
             success:function(data_or){
                 var user=data_or;
                 if (user.data!=null) {
@@ -269,8 +269,8 @@ function getVideo() {
                                     url: "http://cloud.calmcar.com/data/api/vboxpush.action",
                                     contentType: 'application/json;charset=utf-8',
                                     dataType: 'json',
-                                    Header:{"token": token},
-                                    data: {"devNo":t_id, "ispush": "1"},
+                                    Header:JSON.stringify({"token": token}),
+                                    data: JSON.stringify({"devNo":t_id, "ispush": "1"}),
                                     success: function (data_or) {
                                         var re=data_or;
                                         if (re.status== "success")
