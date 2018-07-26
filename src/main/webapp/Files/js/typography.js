@@ -245,12 +245,15 @@ function getVideo() {
             url:"http://cloud.calmcar.com/data/api/vboxlist.action",
             contentType:'application/json;charset=utf-8',
             dataType: 'json',
-            Header:JSON.stringify({"token": token}),
+            beforeSend: function (xhr) {
+            xhr.setRequestHeader("token", token);
+        },
+        //Header:JSON.stringify({"token": token}),
             success:function(data_or){
                 var user=data_or;
                 if (user.data!=null) {
                     var url_array=user.data;
-                    for(i=0;i<url_array.length;i++)
+                    for(i=0;i<1;i++)//url_array.length;i++)
                     {
                         var t_id=eval(url_array[i]).vbox_no;
                         if(1==1)//vbox_no)
@@ -269,7 +272,10 @@ function getVideo() {
                                     url: "http://cloud.calmcar.com/data/api/vboxpush.action",
                                     contentType: 'application/json;charset=utf-8',
                                     dataType: 'json',
-                                    Header:JSON.stringify({"token": token}),
+                                    beforeSend: function (xhr) {
+                                        xhr.setRequestHeader("token", token);
+                                    },
+                                    //Header:JSON.stringify({"token": token}),
                                     data: JSON.stringify({"devNo":t_id, "ispush": "1"}),
                                     success: function (data_or) {
                                         var re=data_or;
@@ -290,7 +296,7 @@ function getVideo() {
                         }
 
                     }
-                    token=token_json.token;
+                    //token=token_json.token;
                 } else {
                     alert("获取视频失败");
                     window.location.reload();
