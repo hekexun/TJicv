@@ -98,7 +98,8 @@ function startBmap(cardata) {
         var car = car_data.CarData
         //{
         var fist_data = JSON.parse(car).datas;
-
+        var loTime=fist_data.TRAVELTIME;
+        refreshTable(loTime,car_data.CarId);
         //这个位置进行判定，是哪个坐标值发生了变化
         var index = 0;
         if ($.inArray(car_data.CarId, carCarID)) {
@@ -132,10 +133,14 @@ function startBmap(cardata) {
             }
         }
     }
-
     setTimeout(remove_overlay(), 5000);
     add_car();
+function refreshTable(time,carid) {
 
+    $("#errorTable tr:last").remove();
+    var dom="<tr><td>"+carid+"</td><td>1</td><td>发动机故障</td><td>上汽</td><td></td>"+time+"</tr>";
+    $("#errorTable").prepend(dom);
+}
     function add_car() {
         for (var j = 0; j < carCarID.length; j++) {
             var content =
