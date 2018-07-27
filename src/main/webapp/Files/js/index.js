@@ -48,7 +48,7 @@ function indexinit(){
         yAxis: [
             {
                 type: 'value',
-                name: '上线车辆数',
+                name: '上线车辆',
                 min: 0,
                 max: 25,
                 position: 'left',
