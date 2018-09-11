@@ -32,6 +32,7 @@ public class WebSocket {
 
         addOnlineCount();
         clients.put(username, this);
+
         System.out.println("已连接");
     }
 
@@ -46,12 +47,13 @@ public class WebSocket {
 
         JSONObject jsonTo = JSONObject.fromObject(message);
         String mes = (String) jsonTo.get("message");
+        sendMessageAll("给所有人");
 
-        if (!jsonTo.get("To").equals("All")){
+       /* if (!jsonTo.get("To").equals("All")){
             sendMessageTo(mes, jsonTo.get("To").toString());
         }else{
             sendMessageAll("给所有人");
-        }
+        }*/
     }
 
     @OnError
