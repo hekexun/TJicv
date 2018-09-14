@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Resource;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -11,16 +12,20 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 //import com.google.gson.JsonObject;
 
+import dao.carrealtimeDao;
+import dao.loginDao;
 import net.sf.json.JSONObject;
+
 @ServerEndpoint("/webSocket/{username}")
 public class WebSocket {
+    @Resource(name = "carrealtimeDao")
+      private carrealtimeDao crt;
+    @Resource(name = "loginDao")
+    private loginDao lgin;
    //这里写的是线程
-    MyThread thread1=new MyThread();
+    myThreadImpl thread1=new myThreadImpl();
     Thread thread=new Thread(thread1);
     //
     private static int onlineCount = 0;

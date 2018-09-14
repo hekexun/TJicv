@@ -4,8 +4,8 @@ import model.User;
 import org.springframework.stereotype.Service;
 
 
-public interface IUserDao {
+public interface UserDao {
 
-    User selectUser(long id);
+    public User selectUser(long id);
 
 }

@@ -9,7 +9,7 @@
     <!-- 自动扫描(自动注入) -->
 
     <!-- 自动扫描 -->
-    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="service.impl,service.websocket"/>
 
     <!-- 第一种方式：加载一个properties文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

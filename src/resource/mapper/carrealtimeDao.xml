@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 设置为IUserDao接口方法提供sql语句配置 -->
-<mapper namespace="dao.IcarRealTimeDao">
-
+<!-- 设置为接口方法提供sql语句配置 -->
+<mapper namespace="dao.carrealtimeDao">
     <select id="selectAllCarRealTime" resultType="CarRealTime">
         SELECT t.devPhone,t.gpsPosY,t.gpsPosX,t.gpsSpeed,t.CanSpeed,t.driveMode,t.engine,t.acceleratorPedal,t.brakePedal,t.steeringwheelAngle,t.videostate FROM tb_carruntime t
     </select>
-
 </mapper>

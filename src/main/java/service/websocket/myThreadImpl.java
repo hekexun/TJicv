@@ -1,23 +1,24 @@
 package service.websocket;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import dao.IcarRealTimeDao;
-import model.CarRealTime;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
-import javax.annotation.Resource;
+import dao.carrealtimeDao;
+
+import model.CarRealTime;
+
+import net.sf.json.JSONArray;
+import org.springframework.stereotype.Service;
+import service.IcarrealtimeService;
+import service.impl.carrealtimeServiceImpl;
+import service.websocket.WebSocket;
+
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class MyThread implements Runnable{
-    private int sum;
-    private int new_sum;
+@Service("myThread")
+public class myThreadImpl implements Runnable{
     private boolean stopMe = true;
-    @Resource(name = "IcarRealTimeDao")
-    private IcarRealTimeDao Icrt;
+    private IcarrealtimeService Icrt=new carrealtimeServiceImpl();
+    //注解构造类
     public void stopMe() {
         stopMe = false;
     }
@@ -27,10 +28,10 @@ public class MyThread implements Runnable{
      */
     public void run()  {
         WebSocket wbs=new WebSocket();
+       // CarRealTime crt=new CarRealTime();
         List<CarRealTime> crt=new ArrayList<CarRealTime>();
-
         while(stopMe){
-            crt = Icrt.selectAllCarRealTime();
+            crt = Icrt.selectCarRealTime();
             JSONArray JO= new JSONArray();
                 System.out.println("change");
             try {
