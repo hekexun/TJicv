@@ -8,6 +8,8 @@ import net.sf.json.JSONObject;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyThread implements Runnable{
@@ -25,8 +27,10 @@ public class MyThread implements Runnable{
      */
     public void run()  {
         WebSocket wbs=new WebSocket();
+        List<CarRealTime> crt=new ArrayList<CarRealTime>();
+
         while(stopMe){
-            List<CarRealTime> crt=Icrt.selectAllCarRealTime();
+            crt = Icrt.selectAllCarRealTime();
             JSONArray JO= new JSONArray();
                 System.out.println("change");
             try {
@@ -44,4 +48,4 @@ public class MyThread implements Runnable{
             }
         }
     }
-}
+

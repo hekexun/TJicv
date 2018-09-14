@@ -19,6 +19,10 @@ import org.springframework.stereotype.Service;
 import net.sf.json.JSONObject;
 @ServerEndpoint("/webSocket/{username}")
 public class WebSocket {
+   //这里写的是线程
+    MyThread thread1=new MyThread();
+    Thread thread=new Thread(thread1);
+    //
     private static int onlineCount = 0;
     private static Map<String, WebSocket> clients = new ConcurrentHashMap<String, WebSocket>();
     private Session session;
@@ -34,10 +38,13 @@ public class WebSocket {
         clients.put(username, this);
 
         System.out.println("已连接");
+        //开启一个线程对数据库中的数据进行轮询
+        thread.start();
     }
 
     @OnClose
     public void onClose() throws IOException {
+        thread1.stopMe();
         clients.remove(username);
         subOnlineCount();
     }
@@ -47,7 +54,7 @@ public class WebSocket {
 
         JSONObject jsonTo = JSONObject.fromObject(message);
         String mes = (String) jsonTo.get("message");
-        sendMessageAll("给所有人");
+        sendMessageAll(message);
 
        /* if (!jsonTo.get("To").equals("All")){
             sendMessageTo(mes, jsonTo.get("To").toString());
@@ -85,7 +92,7 @@ public class WebSocket {
     }
 
     public static synchronized void subOnlineCount() {
-        WebSocket.onlineCount--;
+         WebSocket.onlineCount--;
     }
 
     public static synchronized Map<String, WebSocket> getClients() {

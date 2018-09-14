@@ -5,7 +5,7 @@
 <mapper namespace="dao.IcarRealTimeDao">
 
     <select id="selectAllCarRealTime" resultType="CarRealTime">
-        SELECT username,password FROM tb_login t where t.username=#{username}
+        SELECT t.devPhone,t.gpsPosY,t.gpsPosX,t.gpsSpeed,t.CanSpeed,t.driveMode,t.engine,t.acceleratorPedal,t.brakePedal,t.steeringwheelAngle,t.videostate FROM tb_carruntime t
     </select>
 
 </mapper>
