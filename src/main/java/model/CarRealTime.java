@@ -11,15 +11,15 @@ public class CarRealTime {
     private int driveMode;//驾驶模式0自动驾驶，1人工干预
     private int engine;//发动机转速
 
-    public Date getSendDatetime() {
+    public String getSendDatetime() {
         return sendDatetime;
     }
 
-    public void setSendDatetime(Date sendDatetime) {
+    public void setSendDatetime(String sendDatetime) {
         this.sendDatetime = sendDatetime;
     }
 
-    private Date sendDatetime;//定位时间
+    private String sendDatetime;//定位时间
 
     public String getDevPhone() {
         return devPhone;

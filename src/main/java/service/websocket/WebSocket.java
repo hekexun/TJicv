@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Resource;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -17,14 +16,14 @@ import javax.websocket.server.ServerEndpoint;
 import dao.carrealtimeDao;
 import dao.loginDao;
 import net.sf.json.JSONObject;
+import org.springframework.web.context.ContextLoader;
+import service.IcarrealtimeService;
+import service.impl.carrealtimeServiceImpl;
 
 @ServerEndpoint("/webSocket/{username}")
 public class WebSocket {
-    @Resource(name = "carrealtimeDao")
-      private carrealtimeDao crt;
-    @Resource(name = "loginDao")
-    private loginDao lgin;
-   //这里写的是线程
+    private carrealtimeDao Icrt=(carrealtimeDao) ContextLoader.getCurrentWebApplicationContext().getBean("carrealtimeDao");
+    //这里写的是线程
     myThreadImpl thread1=new myThreadImpl();
     Thread thread=new Thread(thread1);
     //
@@ -32,7 +31,6 @@ public class WebSocket {
     private static Map<String, WebSocket> clients = new ConcurrentHashMap<String, WebSocket>();
     private Session session;
     private String username;
-
     @OnOpen
     public void onOpen(@PathParam("username") String username, Session session) throws IOException {
 
@@ -57,8 +55,8 @@ public class WebSocket {
     @OnMessage
     public void onMessage(String message) throws IOException {
 
-        JSONObject jsonTo = JSONObject.fromObject(message);
-        String mes = (String) jsonTo.get("message");
+       // JSONObject jsonTo = JSONObject.fromObject(message);
+        //String mes = (String) jsonTo.get("message");
         sendMessageAll(message);
 
        /* if (!jsonTo.get("To").equals("All")){
