@@ -94,33 +94,70 @@ function startBmap(cardata) {
     }
     var a = tem_data.length;
     var car_data = {};
-    setTimeout(remove_overlay(), 5000);
     for (var i = 0; i < a; i++) {
         //判定是哪个id
-        add_car(tem_data[i]);
-            }
 
+        car_data = tem_data[i];
+        var car = car_data;
+        var loTime=car.sendDatetime;
+        refreshTable(loTime,car_data.devPhone);
+        //这个位置进行判定，是哪个坐标值发生了变化
+        var index = 0;
+        if ($.inArray(car_data.CarId, carCarID)) {
+            var inof = 0;
+            inof = car_data.CarId;
+            for (var cc = 0; cc < carCarID.length; cc++) {
+                if (car_data.CarId == carCarID[cc]) {
+                    index = cc;
+                }
+            }
+            //发生变化的坐标值进行重新赋值
+            lastv = fist_data.SPEED;
+            lastLot[index] = fist_data.LONGITUDE;
+            lastLat[index] = fist_data.LATITUDE;
+            lastDir[index] = fist_data.DIRECTION;
+            var cas = JSON.parse(car).can
+
+            for (var c = 0; c <car_data; c++) {
+                var cans = cas[c].value;
+                for (var d = 0; d < cans.length; d++) {
+                    if (cans[d].varname == "瞬时油耗") {
+                        lastoil[index] = cans.varvalue;
+                    }
+                    if (cans[d].varname == "油门踏板开度") {
+                        lastkaidu[index] = cans.varvalue;
+                    }
+                    if (cans[d].varname == "发动机转速") {
+                        lastengine[index] = cans.varvalue
+                    }
+                }
+            }
+        }
+    }
+    setTimeout(remove_overlay(), 5000);
+    add_car();
 function refreshTable(time,carid) {
 
     $("#errorTable tr:last").remove();
     var dom="<tr><td>"+carid+"</td><td>1</td><td>发动机故障</td><td>上汽</td><td></td>"+time+"</tr>";
     $("#errorTable").prepend(dom);
 }
-    function add_car(car_data) {
-        var car_a=JSON.parse(car_data);
+    function add_car() {
+        for (var j = 0; j < carCarID.length; j++) {
             var content =
                 "<div class=\"panel panel-default\">" +
                 "<div class=\"panel-heading\">车辆信息</div>" +
                 " <div class=\"panel-body\">" +
                 //面板内容
-                "<p><span class=\"text-muted\">车辆编号：</span><span class=\"text-muted\">" + car_a.devPhone + "</span></p>" +
-                "<p><span class=\"text-muted\">速度：</span><span class=\"text-muted\">" + car_a.gpsSpeed + "</span></p>" +
-                "<p><span class=\"text-muted\">转速：</span><span class=\"text-muted\">" + car_a.engine + "</span></p>" +
-                "<p><span class=\"text-muted\">加速踏板：</span><span class=\"text-muted\">" + car_a.acceleratorPedal + "</span></p>" +
-                "<p><span class=\"text-muted\">驾驶模式：</span><span class=\"text-muted\">" + car_a.drivemode + "</span></p>" +
+                "<p><span class=\"text-muted\">车辆编号：</span><span class=\"text-muted\">" + carCarID[j] + "</span></p>" +
+                "<p><span class=\"text-muted\">速度：</span><span class=\"text-muted\">" + lastv[j] + "</span></p>" +
+                "<p><span class=\"text-muted\">转速：</span><span class=\"text-muted\">" + lastengine[j] + "</span></p>" +
+                "<p><span class=\"text-muted\">油门踏板：</span><span class=\"text-muted\">" + lastkaidu[j] + "</span></p>" +
+                "<p><span class=\"text-muted\">油耗：</span><span class=\"text-muted\">" + lastoil[j] + "</span></p>" +
                 "</div>" +
                 "</div>"
-            add_overlay(content, car_a.gpsPosY, car_a.gpsPosY, car_a.gpsDirect);
+            add_overlay(content, lastLot[j], lastLat[j], lastDir[j]);
+        }
 
     }
 

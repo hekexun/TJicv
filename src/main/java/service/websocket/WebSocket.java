@@ -54,16 +54,7 @@ public class WebSocket {
 
     @OnMessage
     public void onMessage(String message) throws IOException {
-
-       // JSONObject jsonTo = JSONObject.fromObject(message);
-        //String mes = (String) jsonTo.get("message");
         sendMessageAll(message);
-
-       /* if (!jsonTo.get("To").equals("All")){
-            sendMessageTo(mes, jsonTo.get("To").toString());
-        }else{
-            sendMessageAll("给所有人");
-        }*/
     }
 
     @OnError
