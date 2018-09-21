@@ -76,14 +76,6 @@ webSocket.start = function () {
 window.onload = webSocket.start;
 //send();
 //数据获取结果
-var lastv = new Array(carCarID.length);
-var lastLot = new Array(carCarID.length);
-var lastLat = new Array(carCarID.length);
-var lastDir = new Array(carCarID.length);
-var lastoil = new Array(carCarID.length);
-var lastkaidu = new Array(carCarID.length);
-var lastengine = new Array(carCarID.length);
-
 function startBmap(cardata) {
     // 百度地图API功能
     var tem_data = cardata;

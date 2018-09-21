@@ -12,7 +12,7 @@ window.location.href="/login.html";
 $('#loginUser').html('user')
 }
 }
-var carCarID=[15943,15703,11344];
+var carCarID="begin";
 var map = new BMap.Map("allmap");    // 创建Map实例
 map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);  // 初始化地图,设置中心点坐标和地图级别
 //添加地图类型控件
@@ -37,11 +37,12 @@ var webSocket = {};
 var datas = [];
 //开始
 webSocket.start = function () {
-var wsImpl = window.WebSocket || window.MozWebSocket;
+    var wsImpl = window.WebSocket || window.MozWebSocket;
+    var username = "ww"; // 获得当前登录人员的userName
 //服务器地址
-var serverStr = "60.30.94.170:8181";
+    var serverStr = document.location.host;//"60.30.94.170:8181";
 // create a new websocket and connect
-window.ws = new wsImpl('ws://' + serverStr + '/');
+    window.ws = new wsImpl('ws://'+serverStr+'/webSocket/'+username);
 // when data is comming from the server, this metod is called
 ws.onmessage = function (evt) { //console.log(evt.data);
 var temdata=  JSON.parse(evt.data) ;
@@ -86,13 +87,6 @@ ws.send(JSON.stringify(obj));
 window.onload= webSocket.start;
 //send();
 //数据获取结果
-var lastv=new Array(carCarID.length);
-var lastLot=new Array(carCarID.length);
-var lastLat=new Array(carCarID.length);
-var lastDir=new Array(carCarID.length);
-var lastoil=new Array(carCarID.length);
-var lastkaidu=new Array(carCarID.length);
-var lastengine=new Array(carCarID.length);
 function startBmap(cardata) {
 // 百度地图API功能
 var tem_data= cardata.datas;

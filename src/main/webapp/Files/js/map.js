@@ -120,7 +120,7 @@ function refreshTable(time,carid) {
                 "<p><span class=\"text-muted\">驾驶模式：</span><span class=\"text-muted\">" + car_a.drivemode + "</span></p>" +
                 "</div>" +
                 "</div>"
-            add_overlay(content, car_a.gpsPosY, car_a.gpsPosY, car_a.gpsDirect);
+            add_overlay(content, car_a.gpsPosY, car_a.gpsPosX, car_a.gpsDirect);
 
     }
 
