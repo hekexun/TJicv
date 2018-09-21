@@ -53,7 +53,7 @@ public class WebSocket {
     }
 
     @OnMessage
-    public void onMessage(String message) throws IOException {
+    public synchronized void onMessage(String message) throws IOException {
         sendMessageAll(message);
     }
 
@@ -71,9 +71,9 @@ public class WebSocket {
         }
     }
 
-    public void sendMessageAll(String message) throws IOException {
+    public synchronized void sendMessageAll(String message) throws IOException {
         for (WebSocket item : clients.values()) {
-            item.session.getAsyncRemote().sendText(message);
+            item.session.getBasicRemote().sendText(message);
         }
     }
 

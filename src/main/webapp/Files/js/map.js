@@ -107,7 +107,7 @@ function refreshTable(time,carid) {
     $("#errorTable").prepend(dom);
 }
     function add_car(car_data) {
-        var car_a=JSON.parse(car_data);
+        var car_a=car_data;
             var content =
                 "<div class=\"panel panel-default\">" +
                 "<div class=\"panel-heading\">车辆信息</div>" +
