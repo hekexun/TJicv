@@ -88,116 +88,74 @@ window.onload= webSocket.start;
 //send();
 //数据获取结果
 function startBmap(cardata) {
-// 百度地图API功能
-var tem_data= cardata.datas;
-var a =tem_data.length;
-var car_data={};
-for(var i=0;i<a;i++)
-{
-//判定是哪个id
+    // 百度地图API功能
+    var tem_data = cardata;
+    if (tem_data == null) {
+        return null;
+    } else {
+        var a = tem_data.length;
+    }
+    var a = tem_data.length;
+    var car_data = {};
+    setTimeout(remove_overlay(), 5000);
+    for (var i = 0; i < a; i++) {
+        //判定是哪个id
+        add_car(tem_data[i]);
+    }
 
-car_data= tem_data[i];
-var car = car_data.CarData
-//{
+    function refreshTable(time,carid) {
 
-//var car_data =eval(tem_data);//这里出错
-var fist_data= JSON.parse(car).datas;
+        $("#errorTable tr:last").remove();
+        var dom="<tr><td>"+carid+"</td><td>1</td><td>发动机故障</td><td>上汽</td><td></td>"+time+"</tr>";
+        $("#errorTable").prepend(dom);
+    }
+    function add_car(car_data) {
+        var car_a=car_data;
+        var content =
+            "<div class=\"panel panel-default\">" +
+            "<div class=\"panel-heading\">车辆信息</div>" +
+            " <div class=\"panel-body\">" +
+            //面板内容
+            "<p><span class=\"text-muted\">车辆编号：</span><span class=\"text-muted\">" + car_a.devPhone + "</span></p>" +
+            "<p><span class=\"text-muted\">速度：</span><span class=\"text-muted\">" + car_a.gpsSpeed + "</span></p>" +
+            "<p><span class=\"text-muted\">转速：</span><span class=\"text-muted\">" + car_a.engine + "</span></p>" +
+            "<p><span class=\"text-muted\">加速踏板：</span><span class=\"text-muted\">" + car_a.acceleratorPedal + "</span></p>" +
+            "<p><span class=\"text-muted\">驾驶模式：</span><span class=\"text-muted\">" + car_a.drivemode + "</span></p>" +
+            "</div>" +
+            "</div>"
+        add_overlay(content, car_a.gpsPosY, car_a.gpsPosX, car_a.gpsDirect);
 
-//这个位置进行判定，是哪个坐标值发生了变化
-var index=0;
-if($.inArray(car_data.CarId,carCarID))
-{
-var inof=0;
-inof=car_data.CarId;
-for (var cc=0;cc<carCarID.length;cc++)
-{
-if(car_data.CarId==carCarID[cc])
-{
-index=cc;
-}
-}
-//发生变化的坐标值进行重新赋值
-lastv=fist_data.SPEED;
-lastLot[index]=fist_data.LONGITUDE;
-lastLat[index]= fist_data.LATITUDE;
-lastDir[index]=fist_data.DIRECTION;
-var cas=JSON.parse(car).can
+    }
 
-for (var c=0;c<cas.length;c++)
-{
-var cans=cas[c].value;
-for(var d=0;d<cans.length;d++)
-{
-if(cans[d].varname=="瞬时油耗")
-{
-lastoil[index]=cans.varvalue;
-}
-if(cans[d].varname=="油门踏板开度")
-{
-lastkaidu[index]=cans.varvalue;
-}
-if(cans[d].varname=="发动机转速")
-{
-lastengine[index]=cans.varvalue
-}
-}
-}
-}
-}
+    function add_overlay(content, lot, lat, dir) {
+        var pt = new BMap.Point(lot, lat);
+        var myIcon = new BMap.Icon("img/car.png", new BMap.Size(50, 26));
+        var marker = new BMap.Marker(pt, {icon: myIcon});
+        marker.setRotation(dir + 90);
+        map.addOverlay(marker);
+        addClickHandler(content, marker);//增加点
+    }
 
-setTimeout(remove_overlay(),5000)
-add_car();
-function add_car() {
-for (var j=0;j<carCarID.length;j++)
-{
-var content=
-"<div class=\"panel panel-default\">"+
-"<div class=\"panel-heading\">车辆信息</div>"+
-" <div class=\"panel-body\">"+
-    //面板内容
-    "<p><span class=\"text-muted\">车辆编号：</span><span class=\"text-muted\">"+carCarID[j]+"</span></p>"+
-    "<p><span class=\"text-muted\">速度：</span><span class=\"text-muted\">"+lastv[j]+"</span></p>"+
-    "<p><span class=\"text-muted\">转速：</span><span class=\"text-muted\">"+lastengine[j]+"</span></p>"+
-    "<p><span class=\"text-muted\">油门踏板：</span><span class=\"text-muted\">"+lastkaidu[j]+"</span></p>"+
-    "<p><span class=\"text-muted\">油耗：</span><span class=\"text-muted\">"+lastoil[j]+"</span></p>"+
-    "</div>"+
-"</div>"
-add_overlay(content,lastLot[j],lastLat[j],lastDir[j]);
-}
+    //清除覆盖物
+    //}
+    function remove_overlay() {
+        setTimeout(map.clearOverlays(), 5000);
+    }
 
-}
+    function addClickHandler(content, marker) {
+        marker.addEventListener("click", function (e) {
+                openInfo(content, e)
+            }
+        );
+    }
 
-function add_overlay(content,lot,lat,dir){
-var pt=new BMap.Point(lot, lat);
-var myIcon = new BMap.Icon("img/car.png", new BMap.Size(50,26));
-var marker = new BMap.Marker(pt,{icon:myIcon});
-marker.setRotation(dir+90);
-map.addOverlay(marker);
-addClickHandler(content,marker);//左键处理
-   // RightClickHandler(marker);//右键处理
-}
-//清除覆盖物
-//}
-function remove_overlay(){
-setTimeout(map.clearOverlays(),5000);
-}
-function addClickHandler(content,marker){
-marker.addEventListener("click",function(e){//点击图标弹出对话框
-    $("#mediaWindow").show();
-    getVideo();
-    //document.getElementById("videoid").src="http://www.w3school.com.cn/i/movie.ogg" ;
-   // document.getElementById("videoid").play();
-//openInfo(content,e)
-}
-);
-}
+    function openInfo(content, e) {
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    }
 
-function openInfo(content,e){
-var p = e.target;
-var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
-var infoWindow = new BMap.InfoWindow(content);  // 创建信息窗口对象
-map.openInfoWindow(infoWindow,point); //开启信息窗口
-}
 }
 function getVideo() {
     ///获得token
@@ -210,8 +168,8 @@ function getVideo() {
             dataType:'json',
             data:JSON.stringify(
                 {
-                    "username": "catarc",
-                    "password": "catarc@123",
+                    "username": "catarc_sj",
+                    "password": "catarc8437",
                     "expirationmillis": 60000000,
                 }),
             success:function(data_or){

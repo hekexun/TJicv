@@ -83,7 +83,6 @@ var lastDir = new Array(carCarID.length);
 var lastoil = new Array(carCarID.length);
 var lastkaidu = new Array(carCarID.length);
 var lastengine = new Array(carCarID.length);
-
 function startBmap(cardata) {
     // 百度地图API功能
     var tem_data = cardata;
