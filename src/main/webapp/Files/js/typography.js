@@ -29,7 +29,7 @@ map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
 map.addControl(new BMap.NavigationControl()); //添加地图缩放控件
 map.addControl(new BMap.ScaleControl()); //添加比例尺控件
 map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
-//地图初始化结束
+// 地图初始化结束
 
 //实时获取数据
 //webSocket对像
@@ -131,6 +131,7 @@ function startBmap(cardata) {
         var pt = new BMap.Point(lot, lat);
         var myIcon = new BMap.Icon("img/car.png", new BMap.Size(50, 26));
         var marker = new BMap.Marker(pt, {icon: myIcon});
+        marker.getPosition()
         marker.setRotation(dir + 90);
         map.addOverlay(marker);
         addClickHandler(content, marker);//增加点
@@ -154,6 +155,7 @@ function startBmap(cardata) {
         var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
         var infoWindow = new BMap.InfoWindow(content);  // 创建信息窗口对象
         map.openInfoWindow(infoWindow, point); //开启信息窗口
+        $("#mediaWindow").show();
     }
 
 }
@@ -163,7 +165,7 @@ function getVideo() {
     $.ajax({
             type:"post",
             async: false,
-            url:"http://cloud.calmcar.com/data/api/login.action",
+            url:"http://cloud.calmcar.com:5003/api/dologin",
             contentType:'application/json;charset=utf-8',
             dataType:'json',
             data:JSON.stringify(
@@ -194,7 +196,7 @@ function getVideo() {
     $.ajax({
             type:"get",
             async: false,
-            url:"http://cloud.calmcar.com/data/api/vboxlist.action",
+            url:"http://cloud.calmcar.com:5003/api/vboxlist",
             contentType:'application/json;charset=utf-8',
             dataType: 'json',
             beforeSend: function (xhr) {
@@ -207,7 +209,7 @@ function getVideo() {
                     var url_array=user.data;
                     for(i=0;i<1;i++)//url_array.length;i++)
                     {
-                        var t_id=eval(url_array[i]).vbox_no;
+                        var t_id=eval(url_array[i]).devNo;
                         if(1==1)//vbox_no)
                         {
                             var url_ispush=eval(url_array[i]).ispush;
@@ -221,19 +223,20 @@ function getVideo() {
                                 $.ajax({
                                     type: "post",
                                     async: false,
-                                    url: "http://cloud.calmcar.com/data/api/vboxpush.action",
+                                    url: "http://cloud.calmcar.com:5003/api/vbox/"+t_id,
                                     contentType: 'application/json;charset=utf-8',
                                     dataType: 'json',
                                     beforeSend: function (xhr) {
                                         xhr.setRequestHeader("token", token);
                                     },
                                     //Header:JSON.stringify({"token": token}),
-                                    data: JSON.stringify({"devNo":t_id, "ispush": "1"}),
+                                    data: JSON.stringify({"ispush": "1"}),
                                     success: function (data_or) {
                                         var re=data_or;
+                                        var re_data=data_or.data;
                                         if (re.status== "success")
                                         {
-                                            url=eval(url_array[i]).pullUrl;
+                                            url=eval(re_data.message).pullUrl;
                                             document.getElementById("videoid").src=url ;
                                             document.getElementById("videoid").play();
                                         }

@@ -113,4 +113,14 @@ public class CarRealTime {
     private int brakePedal;//刹车踏板开度
     private int steeringwheelAngle;//方向盘转角
     private int videostate;//1可用，0不可用
+
+    public int getGpsDirect() {
+        return gpsDirect;
+    }
+
+    public void setGpsDirect(int gpsDirect) {
+        this.gpsDirect = gpsDirect;
+    }
+
+    private int gpsDirect;//1可用，0不可用
 }
