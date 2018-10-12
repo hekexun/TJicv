@@ -30,6 +30,29 @@ map.addControl(new BMap.NavigationControl()); //添加地图缩放控件
 map.addControl(new BMap.ScaleControl()); //添加比例尺控件
 map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
 // 地图初始化结束
+//获取初始的marker
+var  markerClusterer = new BMapLib.MarkerClusterer(map);
+var marks=[];
+$.ajax
+({
+        type:"post",
+        url:"carRealtimeData.do",
+        dataType: 'json',
+        data:{"username":userName},
+        success:function(data_or){
+           var cars= JSON.parse(evt.data);
+            $.each(data,function(i,d){
+                markers[i]={position:{lat:d.gpsPosY,lng:d.gpsPosX}};
+            });
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    }
+);
+//所有marker 增加到地图上
 
 //实时获取数据
 //webSocket对像
