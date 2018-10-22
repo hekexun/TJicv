@@ -35,6 +35,12 @@ public class myThreadImpl implements Runnable{
         while(stopMe){
             crt = Icrt.selectAllCarRealTime();
             JSONArray JO= new JSONArray();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
                 System.out.println("change");
             try {
                 String re=JO.fromObject(crt).toString();
@@ -43,12 +49,7 @@ public class myThreadImpl implements Runnable{
                 e.printStackTrace();
             }
         }
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+
         }
     }
 
