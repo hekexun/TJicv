@@ -405,8 +405,6 @@
         <!-- Main Widgets -->
 
         <div class="block-area" >
-
-
                     <!-- USA Map -->
                     <div class="tile">
                         <h2 class="tile-title">地图监控</h2>
@@ -418,11 +416,23 @@
                             </ul>
                         </div>
                         <div class="p-10">
-                            <div id="allmap" class="main-chart" style="height: 700px">
-
-                        </div>
+                            <div id="allmap" class="main-chart" style="height: 700px;"></div>
                             <!--悬浮div-->
-                            <div id="mediaWindow" style="bottom:5px;right:10px;position:absolute;z-index:9999;display: none" >
+                            <div id="mediaWindow" style="background-image: url(&quot;img/body/chrome.jpg&quot;);top:40px;right:10px;z-index:999;display: none;float: right;position:absolute;" >
+                                <div id="carInof" class="panel-default">
+                                    <div class="panel-heading" style="color: white">
+                                        车辆信息
+                                    </div>
+                                    <div class="panel-body">
+                                        <p><span class="text-muted">车辆编号：</span><span id="carID" class="text-muted"></span></p>
+                                        <p><span class="text-muted">设备编号：</span><span id="carDEV" class="text-muted"></span></p>
+                                        <p><span class="text-muted">速度：</span><span id="speed" class="text-muted"></span></p>
+                                        <p><span class="text-muted">发动机转速：</span><span id="engine" class="text-muted"></span></p>
+                                        <p><span class="text-muted">加速踏板：</span><span id="acce" class="text-muted"></span></p>
+                                        <p><span class="text-muted">驾驶模式：</span><span id="drivemode" class="text-muted"></span></p>
+                                    </div>
+                                    </div>
+                            <div class="panel-default">
                                 <div class="tile">
                                     <h2 class="tile-title">实时视频</h2>
                                     <div class="tile-config dropdown">
@@ -440,12 +450,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                 </div>
-
-
-
         </div>
-    </section>
 
     <!-- Older IE Message -->
     <!--[if lt IE 9]>

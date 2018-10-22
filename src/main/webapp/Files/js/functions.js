@@ -568,7 +568,6 @@ Date Time Widget
         $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
     }, 1000);
 })();
-
 function doLogin() {
     $.cookie('username', null);
     $.cookie('password', null);
