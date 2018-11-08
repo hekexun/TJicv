@@ -14,6 +14,9 @@ function indexinit() {
     createmap();
     addcarmarkers();
 }
+function dshow(){
+    $("#mediaWindow").css('display','none');
+}
 
 function createmap() {
     map = new BMap.Map("allmap");    // 创建Map实例
@@ -193,14 +196,10 @@ function getVideo(carDEV) {
     ///获得token
     var token;
     $.ajax({
-            headers:
-                {
-                    Accept: "application/json;charset=utf-8"
-                },
             type: "post",
             async: false,
             url: "http://cloud.calmcar.com:5003/api/dologin",
-            //contentType: 'application/json;charset=utf-8',
+            contentType: 'application/json;charset=utf-8',
             dataType: 'json',
             data: JSON.stringify(
                 {
@@ -228,16 +227,12 @@ function getVideo(carDEV) {
     //获得设备列表
     if (carDEV!=null)
     {
-        var url_1="http://cloud.calmcar.com:5003/api/"+carDEV;
+        var url_1="http://cloud.calmcar.com:5003/api/vbox/"+carDEV;
         $.ajax({
-            headers:
-                {
-                    Accept: "application/json;charset=utf-8"
-                },
                 type: "post",
                 async: false,
                 url: url_1,
-                //contentType: 'application/json;charset=utf-8',
+                contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("token", token);

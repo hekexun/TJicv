@@ -112,8 +112,8 @@
                 </a>
             </li>
             <li>
-                <a class="sa-side-widget" href="content-widgets.html">
-                    <span class="menu-item">历史回放</span>
+                <a class="sa-side-widget" href="车辆信息.html">
+                    <span class="menu-item">车辆管理</span>
                 </a>
             </li>
             <li>
@@ -419,9 +419,11 @@
                             <div id="allmap" class="main-chart" style="height: 700px;"></div>
                             <!--悬浮div-->
                             <div id="mediaWindow" style="background-image: url(&quot;img/body/chrome.jpg&quot;);top:40px;right:10px;z-index:999;display: none;float: right;position:absolute;" >
+                                <div class="panel-default" style="float:right">
                                 <div id="carInof" class="panel-default">
+                                    <div  id="hidden" style="height: 34px;width: 34px;float: right;text-align: center;color: white; line-height: 34px;" onclick="dshow()">×</div>
                                     <div class="panel-heading" style="color: white">
-                                        车辆信息
+                                      车辆信息
                                     </div>
                                     <div class="panel-body">
                                         <p><span class="text-muted">车辆编号：</span><span id="carID" class="text-muted"></span></p>
@@ -432,16 +434,9 @@
                                         <p><span class="text-muted">驾驶模式：</span><span id="drivemode" class="text-muted"></span></p>
                                     </div>
                                     </div>
-                            <div class="panel-default">
+                                <div class="panel-default">
                                 <div class="tile">
                                     <h2 class="tile-title">实时视频</h2>
-                                    <div class="tile-config dropdown">
-                                        <a data-toggle="dropdown" href="" class="tile-menu"></a>
-                                        <ul class="dropdown-menu animated pull-right text-right">
-                                            <li><a href="">Refresh</a></li>
-                                            <li><a href="">Settings</a></li>
-                                        </ul>
-                                    </div>
                                     <div >
                                         <video id="videoid" width="100%" height="100%" controls="controls">
                                             <source id="videosource" src="" type="video/mp4">
@@ -449,7 +444,9 @@
                                         </video>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
+                                </div>
+                        </div>
                         </div>
                 </div>
         </div>

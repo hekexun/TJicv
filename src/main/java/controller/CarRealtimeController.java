@@ -3,33 +3,29 @@ package controller;
 import dao.carrealtimeDao;
 import model.CarRealTime;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import service.loginService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class CarRealtimeController {
-    @Resource(name="carrealtimeDao")
+public class CarRealTimeController {
+    @Resource(name = "carrealtimeDao")
     private carrealtimeDao crt;
-    @RequestMapping(value="/carRealtimeData.do")
+    @RequestMapping(value="/Files/car.do")
     public @ResponseBody
-    String loginVerify(HttpServletRequest request, HttpServletResponse response, String username, String password) {
+    String getcarrealtime(HttpServletRequest request, HttpServletResponse response, String username) {
         System.out.println("123");
         try {
-            List<CarRealTime> crtL= crt.selectAllCarRealTime();
+            List<CarRealTime> crtList = crt.selectAllCarRealTime();
             JSONArray JO= new JSONArray();
             System.out.println("change");
-                String re=JO.fromObject(crtL).toString();
+            String re=JO.fromObject(crtList).toString();
             request.setCharacterEncoding("utf-8");
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();

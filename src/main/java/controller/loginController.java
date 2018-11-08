@@ -17,7 +17,7 @@ public class loginController {
 
     @Resource(name = "loginService")
      private loginService login;
-    @RequestMapping(value="/carRealtimeData.do")
+    @RequestMapping(value="/login.do")
     public @ResponseBody
     String getCar(HttpServletRequest request, HttpServletResponse response,String username,String password) {
         System.out.println("123");

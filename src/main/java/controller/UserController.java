@@ -16,7 +16,7 @@ public class UserController {
     @Resource(name ="userService")
     private IUserService userService;
 
-    @RequestMapping("/showUser.do")
+    @RequestMapping("/dologin.do")
     public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
