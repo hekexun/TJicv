@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-public class CarRealTimeController {
+public class CarRealtimeController {
     @Resource(name = "carrealtimeDao")
     private carrealtimeDao crt;
     @RequestMapping(value="/Files/car.do")
