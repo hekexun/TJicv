@@ -20,6 +20,8 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script> <!-- jQuery Library --> <!-- jQuery Library -->
+        <script src="js/jquery.cookie.js"></script>
     </head>
     <body id="skin-blur-ocean">
         <header id="header" class="media">
@@ -66,91 +68,6 @@
             
             <!-- Sidebar -->
             <aside id="sidebar">
-                
-                <!-- Sidbar Widgets -->
-                <div class="side-widgets overflow">
-                    <!-- Profile Menu -->
-                    <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                        <a href="" data-toggle="dropdown">
-                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt="">
-                        </a>
-                        <ul class="dropdown-menu profile-menu">
-                            <li><a href="">My Profile</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                            <li><a href="">Messages</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                            <li><a href="">Settings</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                            <li><a href="">Sign Out</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                        </ul>
-                        <h4 class="m-0">Malinda Hollaway</h4>
-                        @malinda-h
-                    </div>
-                    
-                    <!-- Calendar -->
-                    <div class="s-widget m-b-25">
-                        <div id="sidebar-calendar"></div>
-                    </div>
-                    
-                    <!-- Feeds -->
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">
-                           News Feeds
-                        </h2>
-                        
-                        <div class="s-widget-body">
-                            <div id="news-feed"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Projects -->
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">
-                            Projects on going
-                        </h2>
-                        
-                        <div class="s-widget-body">
-                            <div class="side-border">
-                                <small>Joomla Website</small>
-                                <div class="progress progress-small">
-                                     <a href="#" data-toggle="tooltip" title="" class="progress-bar tooltips progress-bar-danger" style="width: 60%;" data-original-title="60%">
-                                          <span class="sr-only">60% Complete</span>
-                                     </a>
-                                </div>
-                            </div>
-                            <div class="side-border">
-                                <small>Opencart E-Commerce Website</small>
-                                <div class="progress progress-small">
-                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-info" style="width: 43%;" data-original-title="43%">
-                                          <span class="sr-only">43% Complete</span>
-                                     </a>
-                                </div>
-                            </div>
-                            <div class="side-border">
-                                <small>Social Media API</small>
-                                <div class="progress progress-small">
-                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: 81%;" data-original-title="81%">
-                                          <span class="sr-only">81% Complete</span>
-                                     </a>
-                                </div>
-                            </div>
-                            <div class="side-border">
-                                <small>VB.Net Software Package</small>
-                                <div class="progress progress-small">
-                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 10%;" data-original-title="10%">
-                                          <span class="sr-only">10% Complete</span>
-                                     </a>
-                                </div>
-                            </div>
-                            <div class="side-border">
-                                <small>Chrome Extension</small>
-                                <div class="progress progress-small">
-                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 95%;" data-original-title="95%">
-                                          <span class="sr-only">95% Complete</span>
-                                     </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Side Menu -->
                 <ul class="list-unstyled side-menu">
                     <li class="active">
@@ -231,49 +148,25 @@
 
             <!-- Content -->
             <section id="content" class="container">
-            
                 
-                
-                <!-- Breadcrumb -->
-                <ol class="breadcrumb hidden-xs">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Library</a></li>
-                    <li class="active">Data</li>
-                </ol>
-                
-                <h4 class="page-title">TABLES</h4>
+                <h4 class="page-title">车辆信息</h4>
                                 
                 <!-- Deafult Table -->
                 <div class="block-area" id="defaultStyle">
-                    <h3 class="block-title">Default Style</h3>
-                    <table class="table tile">
+                    <h3 class="block-title">车辆信息</h3>
+                    <table class="table tile" id="carInfo">
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>车辆编号</th>
+                                <th>品牌</th>
+                                <th>系列</th>
+                                <th>车型</th>
+                                <th>出厂年份</th>
+                                <th>送达时间</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Jhon </td>
-                                <td>Makinton </td>
-                                <td>@makinton</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Malinda</td>
-                                <td>Hollaway</td>
-                                <td>@hollway</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Wayn</td>
-                                <td>Parnel</td>
-                                <td>@wayne123</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -505,7 +398,6 @@
         
         <!-- Javascript Libraries -->
         <!-- jQuery -->
-        <script src="js/jquery.min.js"></script> <!-- jQuery Library -->
         
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
@@ -520,6 +412,7 @@
         
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
+        <script src="js/carInfo.js"></script>
     </body>
 </html>
 

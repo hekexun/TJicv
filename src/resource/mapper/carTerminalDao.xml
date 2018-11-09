@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为接口方法提供sql语句配置 -->
+<mapper namespace="dao.carTerminalDao">
+    <select id="selectCarInfo" resultType="CarInfo">
+        SELECT t.carNumber,t.Bread,t.series,t.Energy,t.Classify,t.year,t.recieveTime,t.isBind FROM tb_CarInfo t order by t.id
+    </select>
+    <insert id="insertCarInfo" >
+        insert into tb_carruntime () VALUES ();
+    </insert>
+    <update id="updateCarinfo">
+        UPDATE tb_carruntime
+		set devphone='${locationInfo.devPhone}'
+		where
+			devphone = '${locationInfo.devPhone}'
+    </update>
+    <delete id="deleteCarinfo">
+        DELETE FROM tb_CarInfo t  WHERE t.id=#{username}
+    </delete>
+</mapper>

@@ -1,6 +1,9 @@
 package controller;
 
+
+import dao.carTerminalDao;
 import dao.carrealtimeDao;
+import model.CarInfo;
 import model.CarRealTime;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
@@ -14,15 +17,15 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-public class CarRealtimeController {
-    @Resource(name = "carrealtimeDao")
-    private carrealtimeDao crt;
-    @RequestMapping(value="/Files/car.do")
+public class CarTerminalController {
+    @Resource(name = "carTerminalDao")
+    private carTerminalDao ct;
+    @RequestMapping(value="/Files/carInfo.do")
     public @ResponseBody
     String getcarrealtime(HttpServletRequest request, HttpServletResponse response, String username) {
         System.out.println("123");
         try {
-            List<CarRealTime> crtList = crt.selectAllCarRealTime();
+            List<CarInfo> crtList =ct.selectCarInfo();
             JSONArray JO= new JSONArray();
             System.out.println("change");
             String re=JO.fromObject(crtList).toString();
